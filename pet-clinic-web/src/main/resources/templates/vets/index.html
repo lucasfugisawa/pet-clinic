@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>List of Vets</title>
 </head>
 <body>
-<!--/* @thymesVar id="vets" type="br.com.fugisawa.petclinic.model.Vet" */-->
-<h1 th:text="'Vets List.'">Vets placeholder.</h1>
-<table>
+<!--/*@thymesVar id="vet" type="br.com.fugisawa.petclinic.model.Vet"*/-->
+<h2>Veterinarians</h2>
+
+<table id="vets" class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>First Name</th>
+        <th>ID</th>
+        <th>Fist Name</th>
         <th>Last Name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="vet : ${vets}">
-        <td th:text="${vet?.id}">1</td>
-        <td th:text="${vet?.firstName}">Lucas</td>
-        <td th:text="${vet?.lastName}">Fugisawa</td>
+        <td th:text="${vet.id}"></td>
+        <td th:text="${vet.firstName}"></td>
+        <td th:text="${vet.lastName}"></td>
     </tr>
     </tbody>
 </table>
