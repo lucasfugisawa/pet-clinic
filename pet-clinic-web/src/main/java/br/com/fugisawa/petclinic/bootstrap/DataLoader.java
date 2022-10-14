@@ -1,6 +1,7 @@
 package br.com.fugisawa.petclinic.bootstrap;
 
 import br.com.fugisawa.petclinic.model.Owner;
+import br.com.fugisawa.petclinic.model.Pet;
 import br.com.fugisawa.petclinic.model.PetType;
 import br.com.fugisawa.petclinic.model.Vet;
 import br.com.fugisawa.petclinic.services.OwnerService;
@@ -8,6 +9,8 @@ import br.com.fugisawa.petclinic.services.PetTypeService;
 import br.com.fugisawa.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -37,17 +40,37 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loading Owners...");
 
-        Owner owner1 = new Owner();
-        owner1.setFirstName("Lucas");
-        owner1.setLastName("Fugisawa");
-        ownerService.save(owner1);
+        Owner ownerLucas = new Owner();
+        ownerLucas.setFirstName("Lucas");
+        ownerLucas.setLastName("Fugisawa");
+        ownerLucas.setAddress("R. Street Name, 12345.");
+        ownerLucas.setCity("Batatais");
+        ownerLucas.setTelephone("+55 55 55555-5555");
 
-        Owner owner2 = new Owner();
-        owner2.setFirstName("Talisson");
-        owner2.setLastName("Vitorino");
-        ownerService.save(owner2);
+        Pet lucasPet = new Pet();
+        lucasPet.setName("Bartô");
+        lucasPet.setPetType(savedDogType);
+        lucasPet.setOwner(ownerLucas);
+        lucasPet.setBirthDate(LocalDate.now());
+        ownerLucas.getPets().add(lucasPet);
 
-        System.out.println("ownerService.findAll() = " + ownerService.findAll());
+        ownerService.save(ownerLucas);
+
+        Owner ownerTalis = new Owner();
+        ownerTalis.setFirstName("Talisson");
+        ownerTalis.setLastName("Vitorino");
+        ownerTalis.setAddress("R. Street Name, 12346.");
+        ownerTalis.setCity("Batatais");
+        ownerTalis.setTelephone("+55 55 66666-6666");
+
+        Pet talisPet = new Pet();
+        talisPet.setName("Bloom");
+        talisPet.setPetType(savedCatType);
+        talisPet.setOwner(ownerTalis);
+        talisPet.setBirthDate(LocalDate.now());
+        ownerTalis.getPets().add(talisPet);
+
+        ownerService.save(ownerTalis);
 
         System.out.println("Loading Vets...");
 
@@ -60,8 +83,6 @@ public class DataLoader implements CommandLineRunner {
         vet2.setFirstName("Sofia");
         vet2.setLastName("Borin");
         vetService.save(vet2);
-
-        System.out.println("vetService.findAll() = " + vetService.findAll());
 
     }
 }
