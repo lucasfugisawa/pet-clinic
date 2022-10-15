@@ -39,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
 
     private void loadBoostrapData() {
 
-        System.out.println("(DataLoader.run) Loading bootstrap data...");
+        System.out.println("(DataLoader.loadBoostrapData) Loading bootstrap data...");
 
         PetType dog = new PetType();
         dog.setName("Dog");
@@ -105,7 +105,7 @@ public class DataLoader implements CommandLineRunner {
         vet2.getSpecialities().add(dentistry);
         vetService.save(vet2);
 
-        System.out.println("(DataLoader.run) Bootstrap data loaded.");
+        System.out.println("(DataLoader.loadBoostrapData) Bootstrap data loaded.");
     }
 }
 
