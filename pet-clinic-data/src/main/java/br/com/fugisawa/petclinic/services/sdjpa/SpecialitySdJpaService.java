@@ -13,7 +13,7 @@ import java.util.Set;
 @Profile("persist-sdjpa")
 public class SpecialitySdJpaService implements SpecialityService {
 
-    private SpecialityRepository specialityRepository;
+    private final SpecialityRepository specialityRepository;
 
     public SpecialitySdJpaService(SpecialityRepository specialityRepository) {
         this.specialityRepository = specialityRepository;
