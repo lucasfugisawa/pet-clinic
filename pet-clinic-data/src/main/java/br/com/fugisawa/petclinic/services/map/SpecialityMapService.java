@@ -2,11 +2,13 @@ package br.com.fugisawa.petclinic.services.map;
 
 import br.com.fugisawa.petclinic.model.Speciality;
 import br.com.fugisawa.petclinic.services.SpecialityService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "persist-map"})
 public class SpecialityMapService extends AbstractMapService<Speciality, Long>
         implements SpecialityService {
     @Override
