@@ -1,10 +1,7 @@
 package br.com.fugisawa.petclinic.bootstrap;
 
 import br.com.fugisawa.petclinic.model.*;
-import br.com.fugisawa.petclinic.services.OwnerService;
-import br.com.fugisawa.petclinic.services.PetTypeService;
-import br.com.fugisawa.petclinic.services.SpecialityService;
-import br.com.fugisawa.petclinic.services.VetService;
+import br.com.fugisawa.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -62,7 +61,6 @@ public class DataLoader implements CommandLineRunner {
         lucasPet.setOwner(ownerLucas);
         lucasPet.setBirthDate(LocalDate.now());
         ownerLucas.getPets().add(lucasPet);
-
         ownerService.save(ownerLucas);
 
         Owner ownerTalis = new Owner();
@@ -78,8 +76,14 @@ public class DataLoader implements CommandLineRunner {
         talisPet.setOwner(ownerTalis);
         talisPet.setBirthDate(LocalDate.now());
         ownerTalis.getPets().add(talisPet);
-
         ownerService.save(ownerTalis);
+
+        Visit bloomVisit = new Visit();
+        bloomVisit.setPet(talisPet);
+        bloomVisit.setDate(LocalDate.now());
+        bloomVisit.setDescription("Vacinação anual.");
+        visitService.save(bloomVisit);
+
 
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
