@@ -11,11 +11,11 @@ import java.util.Set;
 
 @Service
 @Profile("persist-sdjpa")
-public class VetServiceSDJPA implements VetService {
+public class VetSdJpaService implements VetService {
 
     private VetRepository vetRepository;
 
-    public VetServiceSDJPA(VetRepository vetRepository) {
+    public VetSdJpaService(VetRepository vetRepository) {
         this.vetRepository = vetRepository;
     }
 

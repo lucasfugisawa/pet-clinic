@@ -11,11 +11,11 @@ import java.util.Set;
 
 @Service
 @Profile("persist-sdjpa")
-public class SpecialityServiceSDJPA implements SpecialityService {
+public class SpecialitySdJpaService implements SpecialityService {
 
     private SpecialityRepository specialityRepository;
 
-    public SpecialityServiceSDJPA(SpecialityRepository specialityRepository) {
+    public SpecialitySdJpaService(SpecialityRepository specialityRepository) {
         this.specialityRepository = specialityRepository;
     }
 

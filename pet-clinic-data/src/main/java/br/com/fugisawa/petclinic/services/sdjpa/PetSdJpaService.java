@@ -11,11 +11,11 @@ import java.util.Set;
 
 @Service
 @Profile("persist-sdjpa")
-public class PetServiceSDJPA implements PetService {
+public class PetSdJpaService implements PetService {
 
     private final PetRepository petRepository;
 
-    public PetServiceSDJPA(PetRepository petRepository) {
+    public PetSdJpaService(PetRepository petRepository) {
         this.petRepository = petRepository;
     }
 
