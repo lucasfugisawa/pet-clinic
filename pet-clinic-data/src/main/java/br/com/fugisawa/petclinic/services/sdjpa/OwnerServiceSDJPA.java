@@ -29,33 +29,33 @@ public class OwnerServiceSDJPA implements OwnerService {
     @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
-        ownerRepository.findAll().forEach(owners::add);
+        this.ownerRepository.findAll().forEach(owners::add);
         return owners;
     }
 
     @Override
     public Owner findById(Long id) {
-        return ownerRepository.findById(id).orElse(null);
+        return this.ownerRepository.findById(id).orElse(null);
     }
 
     @Override
     public Owner save(Owner owner) {
-        return ownerRepository.save(owner);
+        return this.ownerRepository.save(owner);
     }
 
     @Override
     public void delete(Owner owner) {
-        ownerRepository.delete(owner);
+        this.ownerRepository.delete(owner);
 
     }
 
     @Override
     public void deleteById(Long id) {
-        ownerRepository.deleteById(id);
+        this.ownerRepository.deleteById(id);
     }
 
     @Override
     public Owner findByLastName(String lastName) {
-        return ownerRepository.findByLastName(lastName);
+        return this.ownerRepository.findByLastName(lastName);
     }
 }
