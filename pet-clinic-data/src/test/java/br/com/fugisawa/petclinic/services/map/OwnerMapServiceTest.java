@@ -1,7 +1,6 @@
 package br.com.fugisawa.petclinic.services.map;
 
 import br.com.fugisawa.petclinic.model.Owner;
-import br.com.fugisawa.petclinic.services.PetService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,17 +9,18 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OwnerMapServiceTest {
+    public static final Long OWNER_ID = 1L;
+    public static final String LAST_NAME = "Last Name";
 
     OwnerMapService ownerMapService;
-    final Long ownerId = 1L;
-    final String lastName = "Last Name";
+
 
     @BeforeEach
     void setUp() {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
         Owner owner = new Owner();
-        owner.setId(ownerId);
-        owner.setLastName(lastName);
+        owner.setId(OWNER_ID);
+        owner.setLastName(LAST_NAME);
         ownerMapService.save(owner);
     }
 
@@ -32,8 +32,8 @@ class OwnerMapServiceTest {
 
     @Test
     void findById() {
-        Owner owner = ownerMapService.findById(ownerId);
-        assertEquals(ownerId, owner.getId());
+        Owner owner = ownerMapService.findById(OWNER_ID);
+        assertEquals(OWNER_ID, owner.getId());
     }
 
     @Test
@@ -55,21 +55,21 @@ class OwnerMapServiceTest {
 
     @Test
     void delete() {
-        ownerMapService.delete(ownerMapService.findById(ownerId));
+        ownerMapService.delete(ownerMapService.findById(OWNER_ID));
         assertEquals(0, ownerMapService.findAll().size());
     }
 
     @Test
     void deleteById() {
-        ownerMapService.deleteById(ownerId);
+        ownerMapService.deleteById(OWNER_ID);
         assertEquals(0, ownerMapService.findAll().size());
     }
 
     @Test
     void findByLastName() {
-        Owner owner = ownerMapService.findByLastName(lastName);
+        Owner owner = ownerMapService.findByLastName(LAST_NAME);
         assertNotNull(owner);
-        assertEquals(ownerId, owner.getId());
+        assertEquals(OWNER_ID, owner.getId());
     }
 
     @Test
