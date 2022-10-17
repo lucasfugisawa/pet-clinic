@@ -39,7 +39,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/lucasfugisawa/pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
