@@ -23,7 +23,7 @@ Those are the main components used in this application:
     ├── pet-clinic-web     <- Rest routers, controllers, pages etc.
     │   └── main           <- Application surce code.
     │   └── tests          <- Automated tests.  
-    └──  README.md          <- The top-level README for developers using this project.
+    └──  README.md         <- The top-level README for developers using this project.
 
 ## License
 MIT
